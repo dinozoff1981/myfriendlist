@@ -1,24 +1,26 @@
-<?php
+<?php 
 
-include "config.php";
+include "config.php"; 
 
-if (isset($_GET['id'])){
+if (isset($_GET['id'])) {
 
-    $user_id=$_GET['id'];
+    $user_id = $_GET['id'];
 
-    $sql="DELETE FROM 'myfriend' WHERE 'id'='$user_id'";
+    $sql = "DELETE FROM `users` WHERE `id`='$user_id'";
 
-    $result=$conn->query($sql);
+     $result = $conn->query($sql);
 
-    if($result==TRUE){
+     if ($result == TRUE) {
 
-        echo "FRIEND DELETED";
+        echo "Record deleted successfully.";
+        header("location:/dbproject/view.php");
+       
     }else{
 
+        echo "Error:" . $sql . "<br>" . $conn->error;
 
-        echo "ERROR:".$sql."<br>".$conn->error;
     }
-}
 
+} 
 
 ?>
