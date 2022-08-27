@@ -25,7 +25,7 @@ include "config.php";
         }else{
 
             echo "Error:" . $sql . "<br>" . $conn->error;
-
+echo "hi";
         }
 
     } 
