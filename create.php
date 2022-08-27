@@ -34,6 +34,7 @@ include "config.php";
 ?>
 
 <!DOCTYPE html>
+<link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 
 <html>
 
@@ -46,7 +47,7 @@ include "config.php";
   <fieldset>
 
     <legend>ENTER YOUR FRIEND DETAIL:</legend>
-
+   
     First name:<br>
 
     <input type="text" name="firstname">
@@ -76,9 +77,46 @@ include "config.php";
 
     <input type="submit" name="submit" value="submit">
 
+    <a class="btn btn-primary" href="/dbproject/view.php" role="button">View</a>
+       <br><br><br>
+
+
   </fieldset>
 
 </form>
+<style>
+
+    form
+
+    {
+
+        display: flexbox;
+        width: 600px;
+        justify-content: center;
+        margin: auto;
+    }
+    h2
+
+    {
+
+        text-align: center;
+        margin-top: 70px;
+    }
+
+    body
+
+    {
+
+        background-color: orange;
+    }
+
+    #btn btn-primary
+
+    {
+        width: 70px;
+        height: 20px;
+    }
+</style>
 
 </body>
 

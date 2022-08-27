@@ -56,6 +56,7 @@ if (isset($_GET['id'])) {
         } 
 
     ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
 
         <h2>Friend Update Form</h2>
 
@@ -64,7 +65,7 @@ if (isset($_GET['id'])) {
           <fieldset>
 
             <legend>Update Friend Info:</legend>
-
+         
             First name:<br>
 
             <input type="text" name="firstname" value="<?php echo $first_name; ?>">
@@ -92,9 +93,14 @@ if (isset($_GET['id'])) {
 
             <br><br>
 
-            <input type="submit" value="Update" name="update">
+            <input type="submit" value="Update" name="update" >
+            
+            <a class="btn btn-primary" href="/dbproject/view.php" role="button">View</a>
+       <br><br><br>
 
           </fieldset>
+
+       
 
         </form> 
 
@@ -113,3 +119,37 @@ if (isset($_GET['id'])) {
 }
 
 ?> 
+
+<style>
+
+    form
+
+    {
+
+        display: flexbox;
+        width: 600px;
+        justify-content: center;
+        margin: auto;
+    }
+    h2
+
+    {
+
+        text-align: center;
+        margin-top: 70px;
+    }
+
+    body
+
+    {
+
+        background-color: orange;
+    }
+
+    #btn btn-primary
+
+    {
+        width: 70px;
+        height: 20px;
+    }
+</style>

@@ -22,6 +22,8 @@ $result =$conn->query($sql);
 <div class="container">
 
 <h2>MY FRIENDS</h2>
+<a class="btn btn-primary" href="/dbproject/create.php" role="button">Add Friend</a>
+       <br><br><br>
 
 <table class="table">
 
