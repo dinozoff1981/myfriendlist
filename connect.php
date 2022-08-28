@@ -1,6 +1,9 @@
 <?php
 
-$con = new mysqli("localhost","root","","newdb");
+
+
+
+$con = new mysqli("remotemysql.com","MHnMDebsQs","eeQRwppfSm","MHnMDebsQs");
 
 if(!$con){
     die(mysqli_error($con));
