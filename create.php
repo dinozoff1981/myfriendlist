@@ -1,132 +1,86 @@
-<?php 
 
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["cdbr-west-03.cleardb.net"];
-$cleardb_username = $cleardb_url["b50d2d6a32b390"];
-$cleardb_password = $cleardb_url["931391db"];
-$cleardb_db = substr($cleardb_url["heroku_2844bab4cf30724"],1);
-$active_group = 'default';
-$query_builder = TRUE;
-// Connect to DB
-$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+<?php
+include 'connect.php';
+
+if(isset($_POST['submit'])){
+
+$fname=$_POST['fname'];
+$lname=$_POST['lname'];
+$email=$_POST['email'];
+$mobile=$_POST['mobile'];
+
+$sql="INSERT INTO friend (fname,lname,email,mobile) VALUES ('$fname','$lname','$email','$mobile')";
+
+$result=mysqli_query($con,$sql);
+
+if($result){
+
+  header('location:index.php');
+}else{
+
+  die(mysqli_error($con));
+}
 
 
-  if (isset($_POST['submit'])) {
-
-    $first_name = $_POST['firstname'];
-
-    $last_name = $_POST['lastname'];
-
-    $email = $_POST['email'];
-
-
-    $phone = $_POST['phone'];
-
-    $sql = "INSERT INTO `myfriend`(`firstname`, `lastname`, `email`, `phone`) VALUES ('$first_name','$last_name','$email','$phone')";
-
-    $result = $conn->query($sql);
-
-    if ($result == TRUE) {
-
-      echo "New record created successfully.";
-
-    }else{
-
-      echo "Error:". $sql . "<br>". $conn->error;
-
-    } 
-
-    $conn->close(); 
-
-  }
+}
 
 ?>
 
-<!DOCTYPE html>
-<link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My friends</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <style>
 
-<body>
+h2
+{
 
-<h2>ADD FRIEND</h2>
+  text-align: center;
+  color: darkblue;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 30px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+</style> 
 
-<form action="" method="POST">
-
-  <fieldset>
-
-    <legend>ENTER YOUR FRIEND DETAIL:</legend>
-   
-    First name:<br>
-
-    <input type="text" name="firstname">
-
-    <br>
-
-    Last name:<br>
-
-    <input type="text" name="lastname">
-
-    <br>
-
-    Email:<br>
-
-    <input type="email" name="email">
-
-    <br>
-
-    Phone:<br>
-
-    <input type="text" name="phone">
-
-    <br>
-
-    
-    <br><br>
-
-    <input type="submit" name="submit" value="submit">
-
-    <a class="btn btn-primary" href="/dbproject/view.php" role="button">View</a>
-       <br><br><br>
+  <body>
 
 
-  </fieldset>
+  <h2>Add A Friend</h2>
+<div class="container my-5">
 
-</form>
-<style>
+    <form method="POST">
+            <div class="mb-3">
+            <label >First Name</label>
+            <input type="text" class="form-control" placeholder="First Name" name="fname">
+            </div>
 
-    form
+            <div class="mb-3">
+            <label >Last  Name</label>
+            <input type="text" class="form-control" placeholder="Last Name" name="lname">
 
-    {
+            </div>
 
-        display: flexbox;
-        width: 600px;
-        justify-content: center;
-        margin: auto;
-    }
-    h2
+            <div class="mb-3">
+            <label >Email</label>
+            <input type="email" class="form-control" placeholder="Email" name="email">
+            </div>  
 
-    {
+            <div class="mb-3">
+            <label >Mobile</label>
+            <input type="text" class="form-control" placeholder="Mobile" name="mobile">
+            </div>
 
-        text-align: center;
-        margin-top: 70px;
-    }
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    </form>
 
-    body
 
-    {
-
-        background-color: orange;
-    }
-
-    #btn btn-primary
-
-    {
-        width: 70px;
-        height: 20px;
-    }
-</style>
-
-</body>
-
+</div>
+  </body>
 </html>
